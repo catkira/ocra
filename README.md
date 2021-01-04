@@ -13,7 +13,7 @@ git clone -b hf_chain_reset https://github.com/catkira/ocra.git
 
 cd ocra
 
-git submodule update --recursive --remote
+git submodule update --init --remote
 
 cd ..
 
@@ -21,7 +21,7 @@ git clone -b reset_instruction https://github.com/catkira/ocra-pulseq
 
 git clone -b shim-interface https://github.com/catkira/marcos_client
 
-git clone -b hf_chain_reset https://github.com/catkira/marcos_extras.git
+git clone -b vn/scratch https://github.com/catkira/marcos_extras.git
 
 
 To compile the HDL sources do: (not necessary if bit files from marcos_extras are used)
