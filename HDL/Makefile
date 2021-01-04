@@ -28,7 +28,7 @@ CORES_PAVEL = axi_axis_reader_v1_0 axi_axis_writer_v1_0 axi_bram_reader_v1_0 \
 endif
 PROC = ps7_cortexa9_0
 
-CORES = micro_sequencer_v1_0 axi_serial_attenuator_v1_0 axis_segmented_bram_reader_v1_0 flocra_grad_ctrl_v1_0
+CORES = micro_sequencer_v1_0 axi_serial_attenuator_v1_0 axis_segmented_bram_reader_v1_0 flocra_grad_ctrl_v1_0 complex_multiplier_v1_0
 
 VIVADO = vivado -nolog -nojournal -mode batch
 RM = rm -rf
