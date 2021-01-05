@@ -83,7 +83,7 @@ cell open-mri:user:complex_multiplier:1.0 mult_0 {
 cell xilinx.com:ip:axis_subset_converter:1.1 real_0 {
     S_TDATA_NUM_BYTES.VALUE_SRC USER
     M_TDATA_NUM_BYTES.VALUE_SRC USER
-    S_TDATA_NUM_BYTES 10
+    S_TDATA_NUM_BYTES 12
     M_TDATA_NUM_BYTES 2
     TDATA_REMAP {tdata[40:25]}
 } {

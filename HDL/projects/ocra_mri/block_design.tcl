@@ -342,7 +342,7 @@ cell xilinx.com:ip:xlconcat:2.1 spi_concat_0 {
 	In3 flocra_grad_ctrl/oc1_sdox_o
 	In4	flocra_grad_ctrl/oc1_sdoy_o
 	In5 flocra_grad_ctrl/oc1_sdoz_o
-	In6 flocra_grad_ctrl/oc1_sdoz_o
+	In6 flocra_grad_ctrl/oc1_sdoz2_o
 }
 
 
