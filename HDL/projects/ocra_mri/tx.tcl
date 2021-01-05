@@ -64,23 +64,18 @@ cell pavel-demin:user:axis_interpolator:1.0 axis_interpolator_0 {
     aresetn /micro_sequencer/hf_reset
 }
 
-# Need to understand the behaviour of the multiplier to see what the outcome of multiplying a 16 bit and a 24 bit value
-# is, IF indeed these are the correct width parameters. Note the final outcome must be only 14bit for the RP on-board
-# DAC
-# No rounding needed 
-# ROUNDMODE Random_Rounding
-# No control connection needed
-# S_AXIS_CTRL lfsr_0/M_AXIS
-cell xilinx.com:ip:cmpy:6.0 mult_0 {
-  FLOWCONTROL NonBlocking
-  APORTWIDTH.VALUE_SRC USER
-  BPORTWIDTH.VALUE_SRC USER
-  APORTWIDTH 16
-  BPORTWIDTH 24
-  OUTPUTWIDTH 41
+
+cell open-mri:user:complex_multiplier:1.0 mult_0 {
+  OPERAND_WIDTH_A 16
+  OPERAND_WIDTH_B 24
+  OPERAND_WIDTH_OUT 41
+  BLOCKING 0
+  STAGES 3
+  TRUNCATE 1
 } {
-  S_AXIS_A axis_interpolator_0/M_AXIS
   aclk /pll_0/clk_out1
+  aresetn /micro_sequencer/hf_reset  
+  s_axis_a axis_interpolator_0/M_AXIS
 }
 
 # extract the real component of the product using a broadcaster in to I and Q
@@ -92,7 +87,7 @@ cell xilinx.com:ip:axis_subset_converter:1.1 real_0 {
     M_TDATA_NUM_BYTES 2
     TDATA_REMAP {tdata[40:25]}
 } {
-    S_AXIS mult_0/M_AXIS_DOUT
+    S_AXIS mult_0/m_axis
     aclk /pll_0/clk_out1
     aresetn /micro_sequencer/hf_reset
 }
