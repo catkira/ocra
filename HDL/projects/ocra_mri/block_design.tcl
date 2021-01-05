@@ -179,7 +179,8 @@ module nco_0 {
 } {
   slice_1/Din cfg_slice_0/Dout
   bcast_nco/M00_AXIS rx_0/mult_0/S_AXIS_B
-  bcast_nco/M01_AXIS tx_0/mult_0/s_axis_b
+  bcast_nco/M01_AXIS tx_0/mult_0/S_AXIS_B
+  dds_nco/aresetn micro_sequencer/hf_reset
 }
 
 # Create axi_sts_register

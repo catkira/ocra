@@ -25,6 +25,7 @@ cell xilinx.com:ip:dds_compiler:6.0 dds_nco {
   PHASE_INCREMENT Streaming
   HAS_TREADY false
   HAS_PHASE_OUT false
+  HAS_ARESETN true
   PHASE_WIDTH 30
   OUTPUT_WIDTH 24
   DSP48_USE Minimal
