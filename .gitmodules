@@ -3,6 +3,6 @@
 	url = https://github.com/vnegnev/ocra_grad_ctrl
 	branch = bd_creation
 [submodule "hdl/submodules/complex_multiplier"]
-	path = hdl/submodules/complex_multiplier
+	path = HDL/submodules/complex_multiplier
 	url = https://github.com/catkira/complex_multiplier
 	branch = master
