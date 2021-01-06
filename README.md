@@ -9,7 +9,7 @@ Ocra development won't continue here. We switched to a stream based sequencer.
 
 To get the latest version running do:
 
-git clone -b hf_chain_reset https://github.com/catkira/ocra.git
+git clone -b new_multiplier https://github.com/catkira/ocra.git
 
 cd ocra
 
@@ -21,7 +21,7 @@ git clone -b reset_instruction https://github.com/catkira/ocra-pulseq
 
 git clone -b shim-interface https://github.com/catkira/marcos_client
 
-git clone -b hf_chain_reset https://github.com/catkira/marcos_extras.git
+git clone -b new_multiplier https://github.com/catkira/marcos_extras.git
 
 
 To compile the HDL sources do: (not necessary if bit files from marcos_extras are used)
@@ -32,7 +32,7 @@ To compile the HDL sources do: (not necessary if bit files from marcos_extras ar
 
 To run the loopback test do:
 - go into marcos_extras
-- run marcos_setup_bm.sh with correct arguments
-- install python3 your host pc
+- run marcos_setup.sh with correct arguments
+- install python3.8 on your host pc
 - edit marcos_client/local_config.py 
 - run loopback_test.py
