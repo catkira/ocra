@@ -64,39 +64,39 @@ cell pavel-demin:user:axis_interpolator:1.0 axis_interpolator_0 {
     aresetn /micro_sequencer/hf_reset
 }
 
-cell xilinx.com:ip:cmpy:6.0 mult_0 {
-  FLOWCONTROL NonBlocking
-  APORTWIDTH.VALUE_SRC USER
-  BPORTWIDTH.VALUE_SRC USER
-  APORTWIDTH 16
-  BPORTWIDTH 24
-  OUTPUTWIDTH 41
+# cell xilinx.com:ip:cmpy:6.0 mult_0 {
+  # FLOWCONTROL NonBlocking
+  # APORTWIDTH.VALUE_SRC USER
+  # BPORTWIDTH.VALUE_SRC USER
+  # APORTWIDTH 16
+  # BPORTWIDTH 24
+  # OUTPUTWIDTH 41
+# } {
+  # S_AXIS_A axis_interpolator_0/M_AXIS
+  # aclk /pll_0/clk_out1
+# }
+
+cell open-mri:user:complex_multiplier:1.0 mult_0 {
+  OPERAND_WIDTH_A 16
+  OPERAND_WIDTH_B 24
+  OPERAND_WIDTH_OUT 16
+  BLOCKING 0
+  STAGES 3
+  TRUNCATE 1
 } {
   S_AXIS_A axis_interpolator_0/M_AXIS
   aclk /pll_0/clk_out1
+  aresetn /micro_sequencer/hf_reset  
 }
-
-# cell open-mri:user:complex_multiplier:1.0 mult_0 {
-  # OPERAND_WIDTH_A 16
-  # OPERAND_WIDTH_B 24
-  # OPERAND_WIDTH_OUT 41
-  # BLOCKING 0
-  # STAGES 3
-  # TRUNCATE 1
-# } {
-  # aclk /pll_0/clk_out1
-  # aresetn /micro_sequencer/hf_reset  
-  # S_AXIS_A axis_interpolator_0/M_AXIS
-# }
 
 # extract the real component of the product using a broadcaster in to I and Q
 # a simpler alternative would be to use a axis_subset_converter
 cell xilinx.com:ip:axis_subset_converter:1.1 real_0 {
     S_TDATA_NUM_BYTES.VALUE_SRC USER
     M_TDATA_NUM_BYTES.VALUE_SRC USER
-    S_TDATA_NUM_BYTES 12
+    S_TDATA_NUM_BYTES 4
     M_TDATA_NUM_BYTES 2
-    TDATA_REMAP {tdata[40:25]}
+    TDATA_REMAP {tdata[15:0]}
 } {
     S_AXIS mult_0/M_AXIS_DOUT
     aclk /pll_0/clk_out1
