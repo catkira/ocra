@@ -11,23 +11,35 @@ cell xilinx.com:ip:xlslice:1.0 rate_slice {
   DIN_WIDTH 64 DIN_FROM 47 DIN_TO 32 DOUT_WIDTH 16
 }
 
-# Create axis_lfsr
-cell pavel-demin:user:axis_lfsr:1.0 lfsr_0 {} {
-  aclk /pll_0/clk_out1
-  aresetn /micro_sequencer/hf_reset
-}
+# # Create axis_lfsr
+# cell pavel-demin:user:axis_lfsr:1.0 lfsr_0 {} {
+  # aclk /pll_0/clk_out1
+  # aresetn /micro_sequencer/hf_reset
+# }
+
+# # Create cmpy
+# cell xilinx.com:ip:cmpy:6.0 mult_0 {
+  # FLOWCONTROL NonBlocking
+  # APORTWIDTH.VALUE_SRC USER
+  # BPORTWIDTH.VALUE_SRC USER
+  # APORTWIDTH 16
+  # BPORTWIDTH 24
+  # ROUNDMODE Random_Rounding
+  # OUTPUTWIDTH 32
+# } {
+  # S_AXIS_CTRL lfsr_0/M_AXIS
+# }
 
 # Create cmpy
-cell xilinx.com:ip:cmpy:6.0 mult_0 {
-  FLOWCONTROL NonBlocking
-  APORTWIDTH.VALUE_SRC USER
-  BPORTWIDTH.VALUE_SRC USER
-  APORTWIDTH 16
-  BPORTWIDTH 24
-  ROUNDMODE Random_Rounding
-  OUTPUTWIDTH 32
+cell open-mri:user:complex_multiplier:1.0 mult_0 {
+  OPERAND_WIDTH_A 16
+  OPERAND_WIDTH_B 24
+  OPERAND_WIDTH_OUT 32
+  BLOCKING 0
+  STAGES 3
+  TRUNCATE 1  
 } {
-  S_AXIS_CTRL lfsr_0/M_AXIS
+  aresetn /micro_sequencer/hf_reset
 }
 
 # Create axis_broadcaster
